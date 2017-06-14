@@ -13,7 +13,7 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const chalk = require('chalk');
-const detect = require('@timer/detect-port');
+const detect = require('detect-port-alt');
 const inquirer = require('inquirer');
 const clearConsole = require('./clearConsole');
 const formatWebpackMessages = require('./formatWebpackMessages');
@@ -107,7 +107,7 @@ function printInstructions(appName, urls, useYarn) {
   console.log('Note that the development build is not optimized.');
   console.log(
     `To create a production build, use ` +
-      `${chalk.cyan(`${useYarn ? 'yarn' : 'npm'} run build`)}.`
+      `${chalk.cyan(`${useYarn ? 'yarn' : 'npm run'} build`)}.`
   );
   console.log();
 }
