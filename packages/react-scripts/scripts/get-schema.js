@@ -17,7 +17,7 @@ function isURL(str) {
 
 const url = process.argv[2]
 
-const saveJson = process.argv[3] === '--json'
+const saveJson = process.argv[3] === 'json'
 
 if (!url) {
   console.log("Usage: get-schema " + chalk.green("url"))
