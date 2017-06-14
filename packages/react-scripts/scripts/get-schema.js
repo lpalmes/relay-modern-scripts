@@ -17,6 +17,8 @@ function isURL(str) {
 
 const url = process.argv[2]
 
+const saveJson = process.argv[3] === '--json'
+
 if (!url) {
   console.log("Usage: get-schema " + chalk.green("url"))
   console.log("  " + chalk.green("url") + " is your graphql server address")
@@ -42,6 +44,11 @@ fetch(url, {
   .then(res => {
     console.log(res)
     console.log("schema.graphql has downloaded and saved")
+    if(saveJson) {
+        const jsonString = JSON.stringify(res.data)
+        console.log("schema.json has been saved")
+        fs.writeFileSync("schema.json", jsonString)
+    }
     const schemaString = printSchema(buildClientSchema(res.data))
     fs.writeFileSync("schema.graphql", schemaString)
   })
